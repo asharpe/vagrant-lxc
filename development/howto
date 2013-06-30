@@ -1,0 +1,18 @@
+Based off the instructions at http://the.taoofmac.com/space/HOWTO/Vagrant, and https://github.com/fgrehm/vagrant-lxc
+
+1. install vagrant + vagrant-lxc
+	wget http://files.vagrantup.com/packages/7e400d00a3c5a0fdf2809c8b5001a035415a607b/vagrant_1.2.2_x86_64.deb
+	sudo dpkg -i vagrant_1.2.2_x86_64.deb
+	vagrant plugin install vagrant-lxc
+
+2. setup path
+	export PATH=/opt/vagrant/embedded/bin:$PATH
+	cd ~/.vagrant.d/gems/gems/vagrant-lxc-0.3.4
+
+3. get bundler requirements
+	# edit Gemspect and add https://github.com/fgrehm/vagrant-cachier to vagrant-cachier
+	bundle install
+
+3. create a box
+	PUPPET=1 bundle exec rake boxes:ubuntu:build:precise64
+
